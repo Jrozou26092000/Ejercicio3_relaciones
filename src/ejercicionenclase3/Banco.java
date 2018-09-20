@@ -14,12 +14,37 @@ public class Banco {
     private Tipo[] tipo;
     private Cuenta[] cuenta;
     
-    public Banco(String codigo){
+    //preguntar porqeu ahi seria agregacion
+    public Banco(String codigo,Cuenta[] cuenta){
         this.codigo=codigo;
-        this.tipo= new Tipo[4];
-        this.cuenta=new Cuenta[10];
+        this.tipo= new Tipo[2];
+        this.cuenta= cuenta;
     }
     
+    public void InformacionCunetas(){
+        for (int i = 0; i < 2; i++) {
+            System.out.println("----------------Cuenta "+(i+1)+"--------------------");
+            System.out.println("Nombre del cliente: "+this.cuenta[i].getNomCliente());
+            System.out.println("Numero de cuenta: "+this.cuenta[i].getNumeroDeCuenta());
+            System.out.println("Slado corriente: "+this.cuenta[i].getCuentaCorriente());
+            System.out.println("Fecha de creacion: ");
+            System.out.println("Dia: "+this.cuenta[i].getFechaDeCreacion().getDia());
+            System.out.println("Mes: "+this.cuenta[i].getFechaDeCreacion().getMes());
+            System.out.println("Año: "+this.cuenta[i].getFechaDeCreacion().getAnnio());
+            Movimiento[] movimiento = this.cuenta[i].getMovimientos(); 
+            for (int j = 0; j < 2; j++) {
+                Tipo[] tipo = movimiento[j].getTipo();
+                System.out.println("Movimiento: "+(i+1));
+                System.out.println("Tipo de movimineto: "+tipo[1]);
+                System.out.println("Fecha: ");
+                System.out.println("Dia: "+movimiento[j].getFecha().getDia());
+                System.out.println("Mes: "+movimiento[j].getFecha().getMes());
+                System.out.println("Año: "+movimiento[j].getFecha().getAnnio());
+                System.out.println("Saldo anterior: "+movimiento[j].getSaldoAnterior());
+                System.out.println("Cantidad: "+movimiento[j].getCantidad());
+            }
+        }
+    }
     public String getCodigo(){
         return codigo;
     }

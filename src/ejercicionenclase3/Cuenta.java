@@ -9,6 +9,7 @@ package ejercicionenclase3;
  *
  * @author david
  */
+import java.util.Scanner;
 public class Cuenta {
     private int numeroDeCuenta;
     private double cuentaCorriente;
@@ -22,6 +23,23 @@ public class Cuenta {
         this.nomCliente=nomCliente;
         this.numeroDeCuenta=numeroDeCuenta;
         this.movimientos= new Movimiento[5];
+        Scanner leer = new Scanner(System.in);
+        for (int i = 0; i < 2; i++) {
+        System.out.println("-------------------Datos del movimiento---------------");
+        System.out.println("Fecha de creacion: ");
+        System.out.println("Dia:  ");
+        int dia = leer.nextInt();
+        System.out.println("Mes: ");
+        int mes = leer.nextInt();
+        System.out.println("Año: ");
+        int annio = leer.nextInt();
+        Fecha fecha = new Fecha(dia,mes,annio);
+        System.out.println("Saldo anterior: ");
+        double saldo =  leer.nextDouble();
+        System.out.println("Cantidad: ");
+        double cantidad = leer.nextDouble();
+        this.movimientos[i]=new Movimiento(fecha, saldo, cantidad);
+        }
     }
     
     public int getNumeroDeCuenta(){
